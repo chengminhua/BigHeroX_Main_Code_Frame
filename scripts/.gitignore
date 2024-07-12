@@ -1,0 +1,7 @@
+__pycache__
+
+# 日志
+*.log
+
+# 本地更新路径
+update_local_path

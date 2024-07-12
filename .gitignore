@@ -1,0 +1,36 @@
+# Vim Swap
+[._]*.s[a-v][a-z]
+# !*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Vim Session
+Session.vim
+Sessionx.vim
+
+# Vim Temporary
+.netrwhist
+*~
+# Vim Auto-generated tag files
+tags
+# Vim Persistent undo
+[._]*.un~
+
+# Rust build cache
+/target
+
+# CMake build
+build
+build-*
+
+# Rust Auto-generated cpp_bindings
+# cpp_bindings
+
+# Log
+*.log
+
+# BigHeroX Robocup Robot：配置文件
+coach_config
+robot_config

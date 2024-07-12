@@ -1,0 +1,122 @@
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# Part: Workspace
+
+[package]
+name = "bigherox-robocup"
+version = "0.1.0"
+authors = ["MiyakoMeow <miyakomeow@qq.com>"]
+edition = "2021"
+license = "None"
+default-run = "bigherox-robocup-striker"
+
+[dependencies]
+test-cpp-input-rs = { version = "0.1.0", path = "../test-cpp-input-rs" }
+
+primitive-byte-iter = "0.1.1"
+
+static_init = "1.0.3"
+rand = "0.8.5"
+approx = "0.5.1"
+glam = {version = "0.28.0", features = ["approx", "bytemuck", "mint", "rand", "serde"]}
+
+num_enum = "0.7.2"
+num_enum_derive = "0.7.2"
+
+async-std = "1.12.0"
+rfd = "0.14.1"
+
+serde = {version = "1.0.202", features = ["derive"]}
+toml = "0.8.13"
+encoding_rs = "0.8.34"
+
+# Bevy ECS
+bevy_ecs = "0.13.2"
+
+# Bevy Plugins
+bevy_mod_picking = "0.19.1"
+mio = { version = "0.8.11", features = ["os-poll", "os-ext", "net", "log"]}
+mio-serial = { version = "5.0.5", features = ["libudev"] }
+
+[dependencies.opencv]
+version = "0.92.0"
+default-features = false
+features = [
+    "clang-runtime",
+    "highgui",
+    "imgcodecs",
+    "imgproc",
+]
+
+[dependencies.bevy]
+version = "0.13.2"
+default-features = false
+features = [
+    "animation",
+    "bevy_asset",
+    "bevy_audio",
+    "bevy_gilrs",
+    "bevy_scene",
+    "bevy_winit",
+    "bevy_core_pipeline",
+    "bevy_pbr",
+    "bevy_gltf",
+    "bevy_render",
+    "bevy_sprite",
+    "bevy_text",
+    "bevy_ui",
+    "multi-threaded",
+    "default_font",
+    # Debug
+    "bevy_gizmos",
+    "bevy_debug_stepping",
+    "tonemapping_luts",
+    # File formats
+    "bmp",
+    "jpeg",
+    "png",
+    "hdr",
+    "minimp3",
+    "mp3",
+    "vorbis",
+    "wav",
+    "zlib",
+    "zstd",
+    # Linux Desktop Backend
+    "x11",
+    "wayland",
+    # Render Backend
+    "webgl2",
+    "webgpu",
+    # Serde
+    "serialize",
+    "async-io",
+    # Debug
+    # "dynamic_linking",
+]
+
+# Part: Profile
+
+# Enable a small amount of optimization in debug mode
+[profile.dev]
+opt-level = 1
+
+# Enable high optimizations for dependencies (incl. Bevy), but not for our code:
+[profile.dev.package."*"]
+opt-level = 3
+
+# [profile.release]
+# lto = "thin"  # It takes too long time
+
+# Part: Bin
+[[bin]]
+name = "bigherox-robocup-coach"
+path = "src/bin/coach.rs"
+
+[[bin]]
+name = "bigherox-robocup-striker"
+path = "src/bin/striker.rs"
+
+[[bin]]
+name = "bigherox-robocup-goalkeeper"
+path = "src/bin/goalkeeper.rs"
